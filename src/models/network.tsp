@@ -14,45 +14,29 @@ model NetworkTypeDTO {
 }
 
 model RentalFeesDTO {
-  /**
-   * Estimated effective rental fee to register/extend a namespace per block.
-   */
+  @doc("Estimated effective rental fee to register/extend a namespace per block.")
   effectiveRootNamespaceRentalFeePerBlock: Amount;
 
-  /**
-   * Estimated effective rental fee to create a subnamespace.
-   */
+  @doc("Estimated effective rental fee to create a subnamespace.")
   effectiveChildNamespaceRentalFee: Amount;
 
-  /**
-   * Estimated effective rental fee to create a mosaic.
-   */
+  @doc("Estimated effective rental fee to create a mosaic.")
   effectiveMosaicRentalFee: Amount;
 }
 
 model TransactionFeesDTO {
-  /**
-   * Average fee multiplier over the last "numBlocksTransactionFeeStats" on the current Network.
-   */
+  @doc("Average fee multiplier over the last \"numBlocksTransactionFeeStats\" on the current Network.")
   averageFeeMultiplier: BlockFeeMultiplier;
 
-  /**
-   * Median fee multiplier over the last "numBlocksTransactionFeeStats" on the current Network.
-   */
+  @doc("Median fee multiplier over the last \"numBlocksTransactionFeeStats\" on the current Network.")
   medianFeeMultiplier: BlockFeeMultiplier;
 
-  /**
-   * Highest fee multiplier over the last "numBlocksTransactionFeeStats" on the current Network.
-   */
+  @doc("Highest fee multiplier over the last \"numBlocksTransactionFeeStats\" on the current Network.")
   highestFeeMultiplier: BlockFeeMultiplier;
 
-  /**
-   * Lowest fee multiplier over the last "numBlocksTransactionFeeStats" on the current Network.
-   */
+  @doc("Lowest fee multiplier over the last \"numBlocksTransactionFeeStats\" on the current Network.")
   lowestFeeMultiplier: BlockFeeMultiplier;
 
-  /**
-   * Minimal fee multiplier on the current connected Node.
-   */
+  @doc("Minimal fee multiplier on the current connected Node.")
   minFeeMultiplier: BlockFeeMultiplier;
 }

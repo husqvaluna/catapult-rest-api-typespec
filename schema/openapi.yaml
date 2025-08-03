@@ -2339,9 +2339,7 @@ components:
         - account
       properties:
         id:
-          type: string
-          description: Internal resource identifier.
-          example: 65204AB4242726662686A453
+          $ref: '#/components/schemas/ID'
         account:
           $ref: '#/components/schemas/AccountDTO'
     AccountKeyLinkNetworkPropertiesDTO:
@@ -2725,10 +2723,7 @@ components:
           allOf:
             - $ref: '#/components/schemas/Importance'
           description: Importance score for this bucket. This is taken into account to calculate the latest account importance.
-      description: |-
-        Supplementary data stored for importance recalculation.
-        At each importance recalculation, existing buckets are shifted, the working bucket is finalized and a new working bucket is created.
-        Each bucket influences at most five importance recalculations.
+      description: Supplementary data stored for importance recalculation. At each importance recalculation, existing buckets are shifted, the working bucket is finalized and a new working bucket is created. Each bucket influences at most five importance recalculations.
     Address:
       type: string
       maxLength: 48
@@ -3059,9 +3054,7 @@ components:
         - block
       properties:
         id:
-          type: string
-          description: Internal resource identifier.
-          example: 67CA9E5B1F221298E20D97CB
+          $ref: '#/components/schemas/ID'
         meta:
           $ref: '#/components/schemas/BlockMetaDTO'
         block:
@@ -3091,22 +3084,13 @@ components:
             $ref: '#/components/schemas/Hash256'
         totalTransactionsCount:
           type: integer
-          description: |-
-            Total number of [transactions](https://docs.symbolplatform.com/concepts/transaction.html) confirmed in this block,
-            including *embedded* transactions (i.e. transactions contained within aggregate transactions).
+          description: Total number of [transactions](https://docs.symbolplatform.com/concepts/transaction.html) confirmed in this block, including *embedded* transactions (i.e. transactions contained within aggregate transactions).
         transactionsCount:
           type: integer
-          description: |-
-            Number of [transactions](https://docs.symbolplatform.com/concepts/transaction.html) confirmed in this block.
-            This does not count *embedded* transactions (i.e. transactions contained within aggregate transactions).
+          description: Number of [transactions](https://docs.symbolplatform.com/concepts/transaction.html) confirmed in this block. This does not count *embedded* transactions (i.e. transactions contained within aggregate transactions).
         statementsCount:
           type: integer
-          description: |-
-            Number of statements (of any kind) present in this block.
-            Bear in mind that some of them (like
-            [resolution statements](https://docs.symbolplatform.com/concepts/receipt.html#resolution-statement)) are
-            triggered by transactions present in the block, but in general,
-            [transaction statements](https://docs.symbolplatform.com/concepts/receipt.html#transaction-statement) are not.
+          description: Number of statements (of any kind) present in this block. Bear in mind that some of them (like [resolution statements](https://docs.symbolplatform.com/concepts/receipt.html#resolution-statement)) are triggered by transactions present in the block, but in general, [transaction statements](https://docs.symbolplatform.com/concepts/receipt.html#transaction-statement) are not.
     BlockOrderByEnum:
       type: string
       enum:
@@ -4021,8 +4005,7 @@ components:
         - transaction
       properties:
         id:
-          type: string
-          description: Internal resource identifier.
+          $ref: '#/components/schemas/ID'
         meta:
           $ref: '#/components/schemas/EmbeddedTransactionMetaDTO'
         transaction:
@@ -4246,7 +4229,8 @@ components:
         - lock
       properties:
         id:
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/ID'
           example: 65204AB4242726662686A453
         lock:
           $ref: '#/components/schemas/HashLockEntryDTO'
@@ -4323,6 +4307,10 @@ components:
       type: string
       description: Height of the blockchain.
       example: '1'
+    ID:
+      type: string
+      description: Internal resource identifier.
+      example: 67CA9E5B1F221298E20D97CB
     Importance:
       type: string
       description: Probability of an account to harvest the next block.
@@ -4660,7 +4648,8 @@ components:
         - metadataEntry
       properties:
         id:
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/ID'
           example: 65204AB4242726662686A453
         metadataEntry:
           $ref: '#/components/schemas/MetadataEntryDTO'
@@ -4733,8 +4722,7 @@ components:
         - mosaicRestrictionEntry
       properties:
         id:
-          type: string
-          description: Internal resource identifier.
+          $ref: '#/components/schemas/ID'
         mosaicRestrictionEntry:
           $ref: '#/components/schemas/MosaicAddressRestrictionEntryWrapperDTO'
     MosaicAddressRestrictionEntryDTO:
@@ -4895,10 +4883,7 @@ components:
           $ref: '#/components/schemas/MosaicFlagsEnum'
         divisibility:
           type: integer
-          description: |-
-            Determines up to what decimal place the mosaic can be divided.
-            Divisibility of 3 means that a mosaic can be divided into smallest parts of 0.001 mosaics.
-            The divisibility must be in the range of 0 and 6.
+          description: Determines up to what decimal place the mosaic can be divided. Divisibility of 3 means that a mosaic can be divided into smallest parts of 0.001 mosaics. The divisibility must be in the range of 0 and 6.
           example: 6
         duration:
           $ref: '#/components/schemas/BlockDuration'
@@ -4989,8 +4974,7 @@ components:
         - mosaicRestrictionEntry
       properties:
         id:
-          type: string
-          description: Internal resource identifier.
+          $ref: '#/components/schemas/ID'
         mosaicRestrictionEntry:
           $ref: '#/components/schemas/MosaicGlobalRestrictionEntryWrapperDTO'
     MosaicGlobalRestrictionEntryDTO:
@@ -5104,9 +5088,7 @@ components:
         - mosaic
       properties:
         id:
-          type: string
-          description: Internal resource identifier.
-          example: 65204AB4242726662686A453
+          $ref: '#/components/schemas/ID'
         mosaic:
           $ref: '#/components/schemas/MosaicDTO'
     MosaicMetadataTransactionDTO:
@@ -5561,8 +5543,7 @@ components:
         - namespace
       properties:
         id:
-          type: string
-          description: Internal resource identifier.
+          $ref: '#/components/schemas/ID'
         meta:
           $ref: '#/components/schemas/NamespaceMetaDTO'
         namespace:
@@ -6122,8 +6103,7 @@ components:
         - statement
       properties:
         id:
-          type: string
-          description: Internal resource identifier.
+          $ref: '#/components/schemas/ID'
         meta:
           $ref: '#/components/schemas/StatementMetaDTO'
         statement:
@@ -6222,7 +6202,8 @@ components:
         - lock
       properties:
         id:
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/ID'
           example: 65204AB4242726662686A453
         lock:
           $ref: '#/components/schemas/SecretLockEntryDTO'
@@ -6505,8 +6486,7 @@ components:
         - transaction
       properties:
         id:
-          type: string
-          description: Internal resource identifier.
+          $ref: '#/components/schemas/ID'
         meta:
           anyOf:
             - $ref: '#/components/schemas/TransactionMetaDTO'
@@ -6623,8 +6603,7 @@ components:
         - statement
       properties:
         id:
-          type: string
-          description: Internal resource identifier.
+          $ref: '#/components/schemas/ID'
         meta:
           $ref: '#/components/schemas/StatementMetaDTO'
         statement:

@@ -2,9 +2,7 @@ import "../types/core.tsp";
 import "./common.tsp";
 
 model VrfKeyLinkNetworkPropertiesDTO {
-  /**
-   * to trigger plugin load
-   */
+  @doc("to trigger plugin load")
   dummy?: string;
 }
 

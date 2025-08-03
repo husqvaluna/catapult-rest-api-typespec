@@ -20,19 +20,12 @@ model MosaicDTO {
   startHeight: Height;
   ownerAddress: Address;
 
-  /**
-   * Number of definitions for the same mosaic.
-   */
+  @doc("Number of definitions for the same mosaic.")
   revision: UInt32;
 
   flags: MosaicFlagsEnum;
 
-  /**
-   * Determines up to what decimal place the mosaic can be divided.
-   * Divisibility of 3 means that a mosaic can be divided into smallest parts of 0.001 mosaics.
-   * The divisibility must be in the range of 0 and 6.
-   *
-   */
+  @doc("Determines up to what decimal place the mosaic can be divided. Divisibility of 3 means that a mosaic can be divided into smallest parts of 0.001 mosaics. The divisibility must be in the range of 0 and 6.")
   @example(6)
   divisibility: integer;
 
@@ -40,43 +33,29 @@ model MosaicDTO {
 }
 
 model MosaicInfoDTO {
-  /**
-   * Internal resource identifier.
-   */
-  @example("65204AB4242726662686A453")
-  id: string;
+  id: ID;
 
   mosaic: MosaicDTO;
 }
 
 model MosaicNetworkPropertiesDTO {
-  /**
-   * Maximum number of mosaics that an account can own.
-   */
+  @doc("Maximum number of mosaics that an account can own.")
   @example("10000")
   maxMosaicsPerAccount?: string;
 
-  /**
-   * Maximum mosaic duration.
-   */
+  @doc("Maximum mosaic duration.")
   @example("365d")
   maxMosaicDuration?: string;
 
-  /**
-   * Maximum mosaic divisibility.
-   */
+  @doc("Maximum mosaic divisibility.")
   @example("6")
   maxMosaicDivisibility?: string;
 
-  /**
-   * Address of the mosaic rental fee sink account.
-   */
+  @doc("Address of the mosaic rental fee sink account.")
   @example("TAMESPACEWH4MKFMBCVFERDPOOP4FK7MTDJEYP35")
   mosaicRentalFeeSinkAddress?: Address;
 
-  /**
-   * Mosaic rental fee.
-   */
+  @doc("Mosaic rental fee.")
   @example("500'000'000")
   mosaicRentalFee?: string;
 }

@@ -32,9 +32,7 @@ model AggregateTransactionBodyExtendedDTO {
 model AggregateTransactionBodyDTO {
   transactionsHash: Hash256;
 
-  /**
-   * Array of transaction cosignatures.
-   */
+  @doc("Array of transaction cosignatures.")
   cosignatures: CosignatureDTO[];
 }
 
@@ -53,9 +51,7 @@ model SecretLockTransactionBodyDTO {
   duration: BlockDuration;
   hashAlgorithm: LockHashAlgorithmEnum;
 }
-/**
- * Transaction to sends mosaics to a recipient if the proof used is revealed. If the duration is reached, the locked funds go back to the sender of the transaction.
- */
+@doc("Transaction to sends mosaics to a recipient if the proof used is revealed. If the duration is reached, the locked funds go back to the sender of the transaction.")
 model SecretLockTransactionDTO {
   ...TransactionDTO;
   ...SecretLockTransactionBodyDTO;
@@ -66,9 +62,7 @@ model SecretProofTransactionBodyDTO {
   secret: Hash256;
   hashAlgorithm: LockHashAlgorithmEnum;
 
-  /**
-   * Original random set of bytes.
-   */
+  @doc("Original random set of bytes.")
   proof: string;
 }
 
@@ -76,14 +70,10 @@ model AccountMetadataTransactionBodyDTO {
   targetAddress: UnresolvedAddress;
   scopedMetadataKey: MetadataKey;
 
-  /**
-   * Change in value size in bytes.
-   */
+  @doc("Change in value size in bytes.")
   valueSizeDelta: integer;
 
-  /**
-   * Value size in bytes.
-   */
+  @doc("Value size in bytes.")
   valueSize: UInt32;
 
   value: MetadataValue;
@@ -94,14 +84,10 @@ model MosaicMetadataTransactionBodyDTO {
   scopedMetadataKey: MetadataKey;
   targetMosaicId: UnresolvedMosaicId;
 
-  /**
-   * Change in value size in bytes.
-   */
+  @doc("Change in value size in bytes.")
   valueSizeDelta: integer;
 
-  /**
-   * Value size in bytes.
-   */
+  @doc("Value size in bytes.")
   valueSize: UInt32;
 
   value: MetadataValue;
@@ -112,14 +98,10 @@ model NamespaceMetadataTransactionBodyDTO {
   scopedMetadataKey: MetadataKey;
   targetNamespaceId?: NamespaceId;
 
-  /**
-   * Change in value size in bytes.
-   */
+  @doc("Change in value size in bytes.")
   valueSizeDelta: integer;
 
-  /**
-   * Value size in bytes.
-   */
+  @doc("Value size in bytes.")
   valueSize: UInt32;
 
   value: MetadataValue;
@@ -129,9 +111,7 @@ model MosaicDefinitionTransactionBodyDTO {
   id: MosaicId;
   duration: BlockDuration;
 
-  /**
-   * Random nonce used to generate the mosaic id.
-   */
+  @doc("Random nonce used to generate the mosaic id.")
   nonce: UInt32;
 
   flags: MosaicFlagsEnum;
@@ -163,9 +143,7 @@ model NamespaceRegistrationTransactionBodyDTO {
   id: NamespaceId;
   registrationType: NamespaceRegistrationTypeEnum;
 
-  /**
-   * Namespace name.
-   */
+  @doc("Namespace name.")
   name: string;
 }
 
@@ -197,14 +175,10 @@ model MultisigAccountModificationTransactionBodyDTO {
    */
   minApprovalDelta: integer;
 
-  /**
-   * Array of cosignatory accounts to add.
-   */
+  @doc("Array of cosignatory accounts to add.")
   addressAdditions: UnresolvedAddress[];
 
-  /**
-   * Array of cosignatory accounts to delete.
-   */
+  @doc("Array of cosignatory accounts to delete.")
   addressDeletions: UnresolvedAddress[];
 }
 
@@ -212,14 +186,10 @@ model MultisigAccountModificationTransactionBodyDTO {
 model AccountAddressRestrictionTransactionBodyDTO {
   restrictionFlags: AccountRestrictionFlagsEnum;
 
-  /**
-   * Account restriction additions.
-   */
+  @doc("Account restriction additions.")
   restrictionAdditions: UnresolvedAddress[];
 
-  /**
-   * Account restriction deletions.
-   */
+  @doc("Account restriction deletions.")
   restrictionDeletions: UnresolvedAddress[];
 }
 
@@ -227,27 +197,19 @@ model AccountAddressRestrictionTransactionBodyDTO {
 model AccountMosaicRestrictionTransactionBodyDTO {
   restrictionFlags: AccountRestrictionFlagsEnum;
 
-  /**
-   * Account restriction additions.
-   */
+  @doc("Account restriction additions.")
   restrictionAdditions: UnresolvedMosaicId[];
 
-  /**
-   * Account restriction deletions.
-   */
+  @doc("Account restriction deletions.")
   restrictionDeletions: UnresolvedMosaicId[];
 }
 model AccountOperationRestrictionTransactionBodyDTO {
   restrictionFlags: AccountRestrictionFlagsEnum;
 
-  /**
-   * Account restriction additions.
-   */
+  @doc("Account restriction additions.")
   restrictionAdditions: TransactionTypeEnum[];
 
-  /**
-   * Account restriction deletions.
-   */
+  @doc("Account restriction deletions.")
   restrictionDeletions: TransactionTypeEnum[];
 }
 
@@ -273,15 +235,10 @@ model MosaicGlobalRestrictionTransactionBodyDTO {
 model TransferTransactionBodyDTO {
   recipientAddress: UnresolvedAddress;
 
-  /**
-   * Array of mosaics sent to the recipient.
-   *
-   */
+  @doc("Array of mosaics sent to the recipient.")
   mosaics: UnresolvedMosaic[];
 
-  /**
-   * Transfer transaction message
-   */
+  @doc("Transfer transaction message")
   message?: string;
 }
 
@@ -348,25 +305,19 @@ model EmbeddedVotingKeyLinkTransactionDTO {
   ...VotingKeyLinkTransactionBodyDTO;
 }
 
-/**
- * Transaction to combine multiple transactions together.
- */
+@doc("Transaction to combine multiple transactions together.")
 model AggregateTransactionDTO {
   ...TransactionDTO;
   ...AggregateTransactionBodyDTO;
 }
 
-/**
- * Transaction to combine multiple transactions together.
- */
+@doc("Transaction to combine multiple transactions together.")
 model AggregateTransactionExtendedDTO {
   ...TransactionDTO;
   ...AggregateTransactionBodyExtendedDTO;
 }
 
-/**
- * Transaction to lock funds before sending an aggregate bonded transaction.
- */
+@doc("Transaction to lock funds before sending an aggregate bonded transaction.")
 model HashLockTransactionDTO {
   ...TransactionDTO;
   ...HashLockTransactionBodyDTO;
@@ -377,9 +328,7 @@ model EmbeddedHashLockTransactionDTO {
   ...HashLockTransactionBodyDTO;
 }
 
-/**
- * Transaction to reveal a proof.
- */
+@doc("Transaction to reveal a proof.")
 model SecretProofTransactionDTO {
   ...TransactionDTO;
   ...SecretProofTransactionBodyDTO;
@@ -396,9 +345,7 @@ model EmbeddedSecretProofTransactionDTO {
 }
 
 
-/**
- * Transaction to create or modify a multisig account.
- */
+@doc("Transaction to create or modify a multisig account.")
 model AccountMetadataTransactionDTO {
   ...TransactionDTO;
   ...AccountMetadataTransactionBodyDTO;
@@ -409,9 +356,7 @@ model EmbeddedAccountMetadataTransactionDTO {
   ...AccountMetadataTransactionBodyDTO;
 }
 
-/**
- * Transaction to create or modify a multisig account.
- */
+@doc("Transaction to create or modify a multisig account.")
 model MosaicMetadataTransactionDTO {
   ...TransactionDTO;
   ...MosaicMetadataTransactionBodyDTO;
@@ -422,9 +367,7 @@ model EmbeddedMosaicMetadataTransactionDTO {
   ...MosaicMetadataTransactionBodyDTO;
 }
 
-/**
- * Transaction to create or modify a multisig account.
- */
+@doc("Transaction to create or modify a multisig account.")
 model NamespaceMetadataTransactionDTO {
   ...TransactionDTO;
   ...NamespaceMetadataTransactionBodyDTO;
@@ -435,9 +378,7 @@ model EmbeddedNamespaceMetadataTransactionDTO {
   ...NamespaceMetadataTransactionBodyDTO;
 }
 
-/**
- * Transaction to create a new mosaic.
- */
+@doc("Transaction to create a new mosaic.")
 model MosaicDefinitionTransactionDTO {
   ...TransactionDTO;
   ...MosaicDefinitionTransactionBodyDTO;
@@ -448,9 +389,7 @@ model EmbeddedMosaicDefinitionTransactionDTO {
   ...MosaicDefinitionTransactionBodyDTO;
 }
 
-/**
- * Transaction to increase or decrease the supply of a mosaic.
- */
+@doc("Transaction to increase or decrease the supply of a mosaic.")
 model MosaicSupplyChangeTransactionDTO {
   ...TransactionDTO;
   ...MosaicSupplyChangeTransactionBodyDTO;
@@ -461,9 +400,7 @@ model EmbeddedMosaicSupplyChangeTransactionDTO {
   ...MosaicSupplyChangeTransactionBodyDTO;
 }
 
-/**
- * Transaction that allows the mosaic creator to revoke some balance from a user.
- */
+@doc("Transaction that allows the mosaic creator to revoke some balance from a user.")
 model MosaicSupplyRevocationTransactionDTO {
   ...TransactionDTO;
   ...MosaicSupplyRevocationTransactionBodyDTO;
@@ -474,9 +411,7 @@ model EmbeddedMosaicSupplyRevocationTransactionDTO {
   ...MosaicSupplyRevocationTransactionBodyDTO;
 }
 
-/**
- * Transaction to create or renew a namespace.
- */
+@doc("Transaction to create or renew a namespace.")
 model NamespaceRegistrationTransactionDTO {
   ...TransactionDTO;
   ...NamespaceRegistrationTransactionBodyDTO;
@@ -487,9 +422,7 @@ model EmbeddedNamespaceRegistrationTransactionDTO {
   ...NamespaceRegistrationTransactionBodyDTO;
 }
 
-/**
- * Transaction to link a namespace to an account.
- */
+@doc("Transaction to link a namespace to an account.")
 model AddressAliasTransactionDTO {
   ...TransactionDTO;
   ...AddressAliasTransactionBodyDTO;
@@ -500,9 +433,7 @@ model EmbeddedAddressAliasTransactionDTO {
   ...AddressAliasTransactionBodyDTO;
 }
 
-/**
- * Transaction to link a namespace to a mosaic.
- */
+@doc("Transaction to link a namespace to a mosaic.")
 model MosaicAliasTransactionDTO {
   ...TransactionDTO;
   ...MosaicAliasTransactionBodyDTO;
@@ -513,9 +444,7 @@ model EmbeddedMosaicAliasTransactionDTO {
   ...MosaicAliasTransactionBodyDTO;
 }
 
-/**
- * Transaction to create or modify a multisig account.
- */
+@doc("Transaction to create or modify a multisig account.")
 model MultisigAccountModificationTransactionDTO {
   ...TransactionDTO;
   ...MultisigAccountModificationTransactionBodyDTO;
@@ -527,9 +456,7 @@ model EmbeddedMultisigAccountModificationTransactionDTO {
   ...MultisigAccountModificationTransactionBodyDTO;
 }
 
-/**
- * Transaction to prevent incoming and outgoing transactions for a given a set of addresses.
- */
+@doc("Transaction to prevent incoming and outgoing transactions for a given a set of addresses.")
 model AccountAddressRestrictionTransactionDTO {
   ...TransactionDTO;
   ...AccountAddressRestrictionTransactionBodyDTO;
@@ -540,9 +467,7 @@ model EmbeddedAccountAddressRestrictionTransactionDTO {
   ...AccountAddressRestrictionTransactionBodyDTO;
 }
 
-/**
- * Transaction to prevent incoming transactions containing a given set of mosaics.
- */
+@doc("Transaction to prevent incoming transactions containing a given set of mosaics.")
 model AccountMosaicRestrictionTransactionDTO {
   ...TransactionDTO;
   ...AccountMosaicRestrictionTransactionBodyDTO;
@@ -553,9 +478,7 @@ model EmbeddedAccountMosaicRestrictionTransactionDTO {
   ...AccountMosaicRestrictionTransactionBodyDTO;
 }
 
-/**
- * Transaction to prevent outgoing transactions by transaction type.
- */
+@doc("Transaction to prevent outgoing transactions by transaction type.")
 model AccountOperationRestrictionTransactionDTO {
   ...TransactionDTO;
   ...AccountOperationRestrictionTransactionBodyDTO;
@@ -566,16 +489,12 @@ model EmbeddedAccountOperationRestrictionTransactionDTO {
   ...AccountOperationRestrictionTransactionBodyDTO;
 }
 
-/**
- * Transaction to set a network-wide restriction rule to a mosaic.
- */
+@doc("Transaction to set a network-wide restriction rule to a mosaic.")
 model MosaicGlobalRestrictionTransactionDTO {
   ...TransactionDTO;
   ...MosaicGlobalRestrictionTransactionBodyDTO;
 }
-/**
- * Transaction to set a restriction rule to an address.
- */
+@doc("Transaction to set a restriction rule to an address.")
 model MosaicAddressRestrictionTransactionDTO {
   ...TransactionDTO;
   ...MosaicAddressRestrictionTransactionBodyDTO;
@@ -592,9 +511,7 @@ model EmbeddedMosaicGlobalRestrictionTransactionDTO {
   ...MosaicGlobalRestrictionTransactionBodyDTO;
 }
 
-/**
- * Transaction to transfer mosaics and a message to another account.
- */
+@doc("Transaction to transfer mosaics and a message to another account.")
 model TransferTransactionDTO {
   ...TransactionDTO;
   ...TransferTransactionBodyDTO;
@@ -610,9 +527,7 @@ model AnnounceTransactionInfoDTO {
 }
 
 model EmbeddedTransactionBodyDTO {
-  /**
-   * Array of transactions initiated by different accounts.
-   */
+  @doc("Array of transactions initiated by different accounts.")
   transactions: EmbeddedTransactionInfoDTO[];
 }
 
@@ -621,10 +536,7 @@ model EmbeddedTransactionDTO {
 }
 
 model EmbeddedTransactionInfoDTO {
-  /**
-   * Internal resource identifier.
-   */
-  id: string;
+  id: ID;
 
   meta: EmbeddedTransactionMetaDTO;
   transaction:
@@ -657,14 +569,10 @@ model EmbeddedTransactionMetaDTO {
   height: Height;
   aggregateHash: Hash256;
 
-  /**
-   * Identifier of the aggregate transaction.
-   */
+  @doc("Identifier of the aggregate transaction.")
   aggregateId: string;
 
-  /**
-   * Transaction index within the aggregate.
-   */
+  @doc("Transaction index within the aggregate.")
   index: integer;
 
   timestamp?: Timestamp;
@@ -686,10 +594,7 @@ model TransactionDTO {
 }
 
 model TransactionInfoDTO {
-  /**
-   * Internal resource identifier.
-   */
-  id: string;
+  id: ID;
 
   meta: TransactionMetaDTO | EmbeddedTransactionMetaDTO;
   transaction:
@@ -748,9 +653,7 @@ model TransactionMetaDTO {
   hash: Hash256;
   merkleComponentHash: Hash256;
 
-  /**
-   * Transaction index within the block.
-   */
+  @doc("Transaction index within the block.")
   index: integer;
 
   timestamp?: Timestamp;

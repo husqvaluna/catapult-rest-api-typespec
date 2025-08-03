@@ -6,96 +6,73 @@ using Http;
 
 namespace Parameters {
   model address {
-    /**
-     * Account address.
-     */
+    @doc("Account address.")
     @path address: Address;
   }
 
   model accountIdPath {
-    /**
-     * Account public key or address encoded using a 32-character set.
-     */
+    @doc("Account public key or address encoded using a 32-character set.")
+    @example("98C83EC40D8D2A7EA6BAE8D8ECAB33E1EB8E7B85E0DE7CE9A7F9B5E2E5E6B9F2A")
     @path accountId: string;
   }
 
   model hashPath {
-    /**
-     * Filter by hash.
-     */
+    @doc("Filter by hash.")
     @path hash: Hash256;
   }
 
   model compositeHashPath {
-    /**
-     * Filter by composite hash.
-     */
+    @doc("Filter by composite hash.")
     @path compositeHash: Hash256;
   }
 
   model heightPath {
-    /**
-     * Block height.
-     */
+    @doc("Block height.")
     @path height: Height;
   }
 
   model limitPath {
-    /**
-     * Number of elements to be returned.
-     * The limit should be greater than or equal to "db.pageSizeMin" and not higher than "db.pageSizeMax".
-     * The settings are adjustable via the configuration file (rest/resources/rest.json) per REST instance.
-     *
-     */
+    @doc("""
+Number of elements to be returned.
+The limit should be greater than or equal to "db.pageSizeMin" and not higher than "db.pageSizeMax".
+The settings are adjustable via the configuration file (rest/resources/rest.json) per REST instance.
+""")
     @path limit: integer;
   }
 
   model mosaicIdPath {
-    /**
-     * Mosaic identifier.
-     */
+    @doc("Mosaic identifier.")
     @path mosaicId: MosaicId;
   }
 
   model namespaceIdPath {
-    /**
-     * Namespace identifier.
-     */
+    @doc("Namespace identifier.")
     @path namespaceId: NamespaceId;
   }
 
   model publicKeyPath {
-    /**
-     * Account public key.
-     */
+    @doc("Account public key.")
     @path publicKey: PublicKey;
   }
 
   model receiptHashPath {
-    /**
-     * Receipt hash.
-     */
+    @doc("Receipt hash.")
     @path hash: Hash256;
   }
 
   model sourceAddressPath {
-    /**
-     * Account address.
-     */
+    @doc("Account address.")
     @path sourceAddress: Address;
   }
 
   model transactionHashPath {
-    /**
-     * Transaction hash.
-     */
+    @doc("Transaction hash.")
     @path hash: Hash256;
   }
 
   model transactionIdPath {
-    /**
-     * Transaction id or hash.
-     */
+    @doc("Transaction id or hash.")
+    @example("C6C5E3B61D18B5F6E88B4D837AE8DEBC")
     @path transactionId: string;
   }
 
@@ -114,6 +91,7 @@ namespace Parameters {
     /**
      * Mosaic or namespace identifier
      */
+    @example("0DC67FBE1CAD29E3")
     @query(#{ explode: true }) artifactId?: string;
   }
 
@@ -212,6 +190,7 @@ namespace Parameters {
      * Otherwise, newer elements with respect to the id are returned.
      *
      */
+    @example("5E4A3C2B1A999888")
     @query(#{ explode: true }) offset?: string;
   }
 
@@ -329,6 +308,7 @@ namespace Parameters {
     /**
      * Filter by namespace or mosaic id.
      */
+    @example("85BBEA6CC462B244")
     @format("hex")
     @query(#{ explode: true }) targetId?: string;
   }

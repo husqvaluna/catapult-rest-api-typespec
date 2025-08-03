@@ -5,35 +5,25 @@ model UnlockedAccountDTO {
 }
 
 model DeploymentDTO {
-  /**
-   * The tool used to create, maintain and deploy the node. Examples: symbol-bootstrap, manual.
-   */
+  @doc("The tool used to create, maintain and deploy the node. Examples: symbol-bootstrap, manual.")
   @example("symbol-bootstrap")
   deploymentTool: string;
 
-  /**
-   * The version of the tool used to create, maintain and deploy the node.
-   */
+  @doc("The version of the tool used to create, maintain and deploy the node.")
   @example("1.1.11")
   deploymentToolVersion: string;
 
-  /**
-   * When was the node last upgraded.
-   */
+  @doc("When was the node last upgraded.")
   @example("2025-03-11")
   lastUpdatedDate: string;
 }
 
 model ServerDTO {
-  /**
-   * catapult-rest component version.
-   */
+  @doc("catapult-rest component version.")
   @example("2.4.4")
   restVersion: string;
 
-  /**
-   * catapult-sdk component version.
-   */
+  @doc("catapult-sdk component version.")
   @example("")
   sdkVersion: string;
 
@@ -62,19 +52,13 @@ model DatabaseDTO {
 }
 
 model StorageInfoDTO {
-  /**
-   * Number of blocks stored.
-   */
+  @doc("Number of blocks stored.")
   numBlocks: integer;
 
-  /**
-   * Number of transactions stored.
-   */
+  @doc("Number of transactions stored.")
   numTransactions: integer;
 
-  /**
-   * Number of accounts created.
-   */
+  @doc("Number of accounts created.")
   numAccounts: integer;
 
   database: DatabaseDTO
@@ -100,9 +84,7 @@ model StorageInfoDTO {
 scalar RolesTypeEnum extends integer;
 
 model NodeInfoDTO {
-  /**
-   * Version of the application.
-   */
+  @doc("Version of the application.")
   @example(16777991)
   version: integer;
 
@@ -110,24 +92,18 @@ model NodeInfoDTO {
   networkGenerationHashSeed: Hash256;
   roles: RolesTypeEnum;
 
-  /**
-   * Port used for the communication.
-   */
+  @doc("Port used for the communication.")
   @example(7900)
   port: integer;
 
   @example(152)
   networkIdentifier: integer;
 
-  /**
-   * Node friendly name.
-   */
+  @doc("Node friendly name.")
   @example("mock-server")
   friendlyName: string;
 
-  /**
-   * Node IP address.
-   */
+  @doc("Node IP address.")
   @example("192.0.2.1")
   host: string;
 
@@ -135,14 +111,10 @@ model NodeInfoDTO {
 }
 
 model NodeHealthDTO {
-  /**
-   * API node service status.
-   */
+  @doc("API node service status.")
   apiNode: NodeStatusEnum;
 
-  /**
-   * MongoDB service status.
-   */
+  @doc("MongoDB service status.")
   db: NodeStatusEnum;
 }
 
@@ -155,9 +127,7 @@ enum NodeStatusEnum {
   down,
 }
 
-/**
- * Node equality strategy. Defines if the identifier for the node must be its public key or host.
- */
+@doc("Node equality strategy. Defines if the identifier for the node must be its public key or host.")
 enum NodeIdentityEqualityStrategy {
   host,
   `public-key`,

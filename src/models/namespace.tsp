@@ -4,16 +4,12 @@ import "./common.tsp";
 model AccountNamesDTO {
   address: Address;
 
-  /**
-   * Account linked namespace names.
-   */
+  @doc("Account linked namespace names.")
   names: string[];
 }
 
 model AccountsNamesDTO {
-  /**
-   * Array of account names.
-   */
+  @doc("Array of account names.")
   accountNames: AccountNamesDTO[];
 }
 
@@ -26,33 +22,24 @@ model AliasDTO {
 model MosaicNamesDTO {
   mosaicId: MosaicId;
 
-  /**
-   * Mosaic linked namespace names.
-   */
+  @doc("Mosaic linked namespace names.")
   names: string[];
 }
 
 model MosaicsNamesDTO {
-  /**
-   * Array of mosaic names.
-   */
+  @doc("Array of mosaic names.")
   mosaicNames: MosaicNamesDTO[];
 }
 
 model NamespaceInfoDTO {
-  /**
-   * Internal resource identifier.
-   */
-  id: string;
+  id: ID;
 
   meta: NamespaceMetaDTO;
   `namespace`: NamespaceDTO;
 }
 
 model NamespaceMetaDTO {
-  /**
-   * If true, the namespace is active.
-   */
+  @doc("If true, the namespace is active.")
   active: boolean;
 
   index: integer;
@@ -62,9 +49,7 @@ model NamespaceDTO {
   version: StateVersion;
   registrationType: NamespaceRegistrationTypeEnum;
 
-  /**
-   * Level of the namespace.
-   */
+  @doc("Level of the namespace.")
   depth: integer;
 
   level0: NamespaceId;

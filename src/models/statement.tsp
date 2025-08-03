@@ -1,9 +1,7 @@
 import "../types/core.tsp";
 import "./common.tsp";
 
-/**
- * Receipt stored when a state change that triggered a mosaic transfer.
- */
+@doc("Receipt stored when a state change that triggered a mosaic transfer.")
 model BalanceTransferReceiptDTO {
   ...ReceiptDTO;
   mosaicId: MosaicId;
@@ -12,9 +10,7 @@ model BalanceTransferReceiptDTO {
   recipientAddress: Address;
 }
 
-/**
- * Receipt stored when a state change modified an account balance.
- */
+@doc("Receipt stored when a state change modified an account balance.")
 model BalanceChangeReceiptDTO {
   ...ReceiptDTO;
   mosaicId: MosaicId;
@@ -22,25 +18,19 @@ model BalanceChangeReceiptDTO {
   targetAddress: Address;
 }
 
-/**
- * Receipt stored when a namespace expires.
- */
+@doc("Receipt stored when a namespace expires.")
 model NamespaceExpiryReceiptDTO {
   ...ReceiptDTO;
   artifactId: NamespaceId;
 }
 
-/**
- * Receipt stored when a mosaic expires.
- */
+@doc("Receipt stored when a mosaic expires.")
 model MosaicExpiryReceiptDTO {
   ...ReceiptDTO;
   artifactId: MosaicId;
 }
 
-/**
- * Receipt stored when network currency mosaics were created due to inflation.
- */
+@doc("Receipt stored when network currency mosaics were created due to inflation.")
 model InflationReceiptDTO {
   ...ReceiptDTO;
   mosaicId: MosaicId;
@@ -48,9 +38,7 @@ model InflationReceiptDTO {
 }
 
 model ReceiptDTO {
-  /**
-   * Version of the receipt.
-   */
+  @doc("Version of the receipt.")
   version: integer;
 
   type: ReceiptTypeEnum;
@@ -80,10 +68,7 @@ model ResolutionStatementDTO {
  *
  */
 model ResolutionStatementInfoDTO {
-  /**
-   * Internal resource identifier.
-   */
-  id: string;
+  id: ID;
 
   meta: StatementMetaDTO;
   statement: ResolutionStatementDTO;
@@ -91,13 +76,9 @@ model ResolutionStatementInfoDTO {
 
 model ResolutionStatementPage is Page<ResolutionStatementInfoDTO>;
 
-/**
- * Transaction that triggered the receipt.
- */
+@doc("Transaction that triggered the receipt.")
 model SourceDTO {
-  /**
-   * Transaction index within the block.
-   */
+  @doc("Transaction index within the block.")
   primaryId: UInt32;
 
   /**
@@ -110,9 +91,7 @@ model SourceDTO {
 
 
 
-/**
- * Metadata related to the statment, including block information.
- */
+@doc("Metadata related to the statment, including block information.")
 model StatementMetaDTO {
   timestamp: Timestamp;
 }
@@ -121,9 +100,7 @@ model TransactionStatementDTO {
   height: Height;
   source: SourceDTO;
 
-  /**
-   * Array of receipts.
-   */
+  @doc("Array of receipts.")
   receipts: (
     | BalanceTransferReceiptDTO
     | BalanceChangeReceiptDTO
@@ -132,14 +109,9 @@ model TransactionStatementDTO {
     | InflationReceiptDTO)[];
 }
 
-/**
- * Collection of receipts related to a transaction.
- */
+@doc("Collection of receipts related to a transaction.")
 model TransactionStatementInfoDTO {
-  /**
-   * Internal resource identifier.
-   */
-  id: string;
+  id: ID;
 
   meta: StatementMetaDTO;
   statement: TransactionStatementDTO;

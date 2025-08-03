@@ -16,24 +16,17 @@ model AccountRestrictionsDTO {
 model AccountRestrictionDTO {
   restrictionFlags: AccountRestrictionFlagsEnum;
 
-  /**
-   * Address, mosaic id, or transaction type to restrict.
-   */
+  @doc("Address, mosaic id, or transaction type to restrict.")
   values: (UnresolvedAddress | UnresolvedMosaicId | TransactionTypeEnum)[];
 }
 
 model AccountRestrictionNetworkPropertiesDTO {
-  /**
-   * Maximum number of account restriction values.
-   */
+  @doc("Maximum number of account restriction values.")
   maxAccountRestrictionValues?: string;
 }
 
 model MosaicAddressRestrictionDTO {
-  /**
-   * Internal resource identifier.
-   */
-  id: string;
+  id: ID;
 
   mosaicRestrictionEntry: MosaicAddressRestrictionEntryWrapperDTO;
 }
@@ -41,9 +34,7 @@ model MosaicAddressRestrictionDTO {
 model MosaicAddressRestrictionEntryDTO {
   key: RestrictionKey;
 
-  /**
-   * Restriction value.
-   */
+  @doc("Restriction value.")
   value: string;
 }
 
@@ -57,10 +48,7 @@ model MosaicAddressRestrictionEntryWrapperDTO {
 }
 
 model MosaicGlobalRestrictionDTO {
-  /**
-   * Internal resource identifier.
-   */
-  id: string;
+  id: ID;
 
   mosaicRestrictionEntry: MosaicGlobalRestrictionEntryWrapperDTO;
 }
@@ -85,9 +73,7 @@ model MosaicGlobalRestrictionEntryWrapperDTO {
 }
 
 model MosaicRestrictionNetworkPropertiesDTO {
-  /**
-   * Maximum number of mosaic restriction values.
-   */
+  @doc("Maximum number of mosaic restriction values.")
   maxMosaicRestrictionValues?: string;
 }
 

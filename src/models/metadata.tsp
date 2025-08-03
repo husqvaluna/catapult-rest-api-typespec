@@ -10,22 +10,18 @@ model MetadataEntryDTO {
   targetId?: MosaicId | NamespaceId;
   metadataType: MetadataTypeEnum;
 
-  /**
-   * Metadata value.
-   */
+  @doc("Metadata value.")
   @format("hex") value: string;
 }
 
 model MetadataInfoDTO {
   @example("65204AB4242726662686A453")
-  id: string;
+  id: ID;
   metadataEntry: MetadataEntryDTO;
 }
 
 model MetadataNetworkPropertiesDTO {
-  /**
-   * Maximum metadata value size.
-   */
+  @doc("Maximum metadata value size.")
   @example("1024")
   maxValueSize?: string;
 }
